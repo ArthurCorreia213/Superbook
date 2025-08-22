@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'user.apps.UserConfig',
     'reactions.apps.ReactionsConfig',
+    'crispy_forms',
     'crispy_bootstrap5',
 ]
 
