@@ -4,9 +4,9 @@ from django.contrib.auth.forms import UserCreationForm
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()
-    poderes = forms.CharField()
-    estado = forms.CharField()
-    cidade = forms.CharField()
+    poderes = forms.CharField(max_length=50)
+    estado = forms.CharField(max_length=50)
+    cidade = forms.CharField(max_length=50)
 
     class Meta:
         model = User

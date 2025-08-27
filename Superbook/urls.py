@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from user.views import register as user_register
+from user.views import ListarHerois
+from blog.views import ListarPosts, CriarPost
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_register, name='register'),
+    path('', ListarHerois.as_view(), name='herois'),
+    path('posts/', ListarPosts.as_view(), name='posts'),
+    path('posts/criar/', CriarPost.as_view(), name='criar_post'),
 ]
