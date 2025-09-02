@@ -7,7 +7,15 @@
 </head>
 <body>
     {% for heroi in herois %}
-        <li>{{ heroi.username }} - {{ heroi.poderes }}</li>
+        <div class="col-md-4">
+            <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ heroi.username }}</h5>
+                <p class="card-text">{{ heroi.poderes }}</p>
+                <small class="text-muted">{{ heroi.cidade }}</small>
+            </div>
+            </div>
+        </div>
     {% endfor %}
 </body>
 </html>

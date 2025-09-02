@@ -11,7 +11,7 @@ class CriarPost(CreateView):
     fields = ['titulo', 'texto']
 
     def form_valid(self, form):
-        form.instance.autor = User.objects.get(pk=1)
+        form.instance.autor = self.request.user
         super().form_valid(form)
         return redirect('posts')
 
