@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends 'blog/base.html' %}
+{% block content %}
     {% for heroi in herois %}
-        <div class="col-md-4">
+        <div class="col-md-4 offset-4 text-center mt-3">
             <div class="card mb-3">
             <div class="card-body">
                 <h5 class="card-title">{{ heroi.username }}</h5>
@@ -17,5 +11,4 @@
             </div>
         </div>
     {% endfor %}
-</body>
-</html>
+{% endblock content %}

@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'user.Heroi'
 
+LOGIN_REDIRECT_URL = 'herois'
+
 # Application definition
 
 INSTALLED_APPS = [
