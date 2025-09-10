@@ -10,4 +10,4 @@ class Heroi(AbstractUser):
     estado = models.CharField(max_length=50)
     cidade = models.CharField(max_length=50)
 
-    REQUIRED_FIELDS=['email', 'poderes', 'estado', 'cidade', 'password1', 'password2']
+    REQUIRED_FIELDS=['email']

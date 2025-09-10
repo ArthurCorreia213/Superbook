@@ -21,6 +21,10 @@ from user.views import register as user_register
 from user.views import ListarHerois
 from blog.views import ListarPosts, CriarPost
 
+admin.site.site_header = "SuperBook Admin"
+admin.site.site_title = "SuperBook Painel"
+admin.site.index_title = "Bem-vindo ao SuperBook"
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', user_register, name='register'),
