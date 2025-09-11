@@ -32,8 +32,11 @@
         <a class="nav-link" href="{% url 'posts' %}">Posts</a>
       </li>
       {% if user.is_authenticated %}
-        <li class="nav-item active ms-5">
+        <li class="nav-item active">
           <a class="nav-link" href="{% url 'criar_post' %}">Criar Post</a>
+        </li>
+        <li class="nav-item active ms-5">
+          <a class="nav-link" href="{% url 'criar_post' %}">{{ user.username }}</a>
         </li>
         <li class='nav-item'>
           <form method="post" action="{% url 'logout' %}">

@@ -19,7 +19,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from user.views import register as user_register
 from user.views import ListarHerois
-from blog.views import ListarPosts, CriarPost
+from blog.views import *
 
 admin.site.site_header = "SuperBook Admin"
 admin.site.site_title = "SuperBook Painel"
@@ -31,6 +31,9 @@ urlpatterns = [
     path('', ListarHerois.as_view(), name='herois'),
     path('posts/', ListarPosts.as_view(), name='posts'),
     path('posts/criar/', CriarPost.as_view(), name='criar_post'),
+    path('posts/<int:pk>/', DetalhesPost.as_view(), name='detail_post'),
+    path('posts/<int:pk>/edit', AtualizarPost.as_view(), name='edit_post'),
+    path('posts/<int:pk>/delete', ApagarPost.as_view(), name='delete_post'),
     path('login/', LoginView.as_view(template_name='user/login.html'), name='login'),
     path ('logout/', LogoutView.as_view(template_name='user/logout.html'), name='logout'),
 ]
