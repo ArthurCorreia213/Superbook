@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
-from django.views.generic.edit import FormMixin
+from django.views.generic.edit import FormMixin, ModelFormMixin
 from .models import Post
 from django.urls import reverse_lazy
 
@@ -43,7 +43,8 @@ class ApagarPost(DeleteView):
     template_name = 'blog/delete_post.html'
     success_url = reverse_lazy('posts')
 
-class DetalhesPost(DetailView, FormMixin):
+class DetalhesPost(ModelFormMixin, DetailView):
+    #Arthur Correia
     model = Post
     template_name = 'blog/detail.html'
     form_class = FormComentario
@@ -52,4 +53,23 @@ class DetalhesPost(DetailView, FormMixin):
         post = super().get_context_data(**kwargs)
         comentarios = Comentario.objects.filter(post=post['post'].pk)
         print(comentarios)
-        return {'post': post, 'comentarios':comentarios}
+        form = self.get_form()
+        form.fields['texto'].initial = ''
+        print(form.fields['texto'].initial)
+        return {'post': post, 'comentarios':comentarios, 'form': form}
+    
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+        form.fields['texto'].initial = ''
+        self.object = self.get_object()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+        
+    def form_valid(self,form):
+        form.instance.autor = self.request.user
+        form.instance.post = self.object
+        return super(DetalhesPost, self).form_valid(form)
+    
+    success_url = '#'
